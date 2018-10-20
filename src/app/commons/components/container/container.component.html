@@ -1,0 +1,18 @@
+<div class="wrapper container-fluid">
+    <div class="header row">
+        <div class="col-sm-12">
+            <ng-content select="[header]"></ng-content>
+        </div>
+    </div>
+    <div class="body row">
+        <div class="side-left" [ngClass]="{'col-md-2 collapsed':toggleLeft}" malihu-scrollbar [scrollbarOptions]="scrollbarOptions">
+            <ng-content select="[side-left]"></ng-content>
+        </div>
+        <div class="content" [ngClass]="{'col-md-7': (toggleLeft && toggleRight), 'col-md-9': (!toggleLeft && toggleRight), 'col-md-10': (toggleLeft &&!toggleRight), 'col-md-12': (!toggleLeft && !toggleRight)}" malihu-scrollbar [scrollbarOptions]="scrollbarOptions">
+            <ng-content select="[content]"></ng-content>
+        </div>
+        <div class="side-right" [ngClass]="{'col-md-3 collapsed':toggleRight}" malihu-scrollbar [scrollbarOptions]="scrollbarOptions">
+            <ng-content select="[side-right]"></ng-content>
+        </div>
+    </div>
+</div>

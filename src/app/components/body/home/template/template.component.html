@@ -1,0 +1,94 @@
+<app-container toggleLeft="true" toggleRight="true" #container>
+    <div header>
+        <div class="global-bar">
+            <div class="btn" (click)="documentEditForm.ngSubmit.emit()" [class.disabled]="!documentEditForm.form.valid">
+                <i class="icon icons8-save"></i>
+                <div class="title">Save</div>
+            </div>
+        </div>
+    </div>
+    <div side-left>
+        <div class="p-2 side-title">Temlate Details</div>
+        <div>
+            <app-p-collapse [title]="'Basic Infomation'" [opened]="true">
+                <div style="background: #383a3e" class="p-2">Genaral</div>
+                <div class="p-2">
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()" #documentEditForm="ngForm">
+                        <label>Name</label>
+                        <input type="text" class="asa-input" formControlName="name" required [ngClass]="{'is-invalid': name.invalid && (name.dirty || name.touched) }" />
+                        
+                        <label>Config Name</label>
+                        <input type="text" class="asa-input" formControlName="configName" required [ngClass]="{'is-invalid': configName.invalid && (configName.dirty || configName.touched) }" />
+
+                        <label>Description</label>
+                        <textarea required type="text" class="asa-input" formControlName="description" [ngClass]="{'is-invalid': description.invalid && (description.dirty || description.touched) }"></textarea>
+
+                        <div class="form-check">
+                            <label class="asa-c-checkbox">Send Alarms
+                                <input class="form-check-input" type="checkbox" formControlName="sendsAlarms">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-check">
+                            <label class="asa-c-checkbox">Send Camera Switch
+                                <input class="form-check-input" type="checkbox" formControlName="sendsCameraSwitch">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-check">
+                            <label class="asa-c-checkbox">Send Event
+                                <input class="form-check-input" type="checkbox" formControlName="sendsEvents">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+
+                        <label>Device type</label>
+                        <app-asa-dropdown [data]="deviceTypes" [selectedItem]="deviceSelected" [invalid] = "form.value.deviceType === undefined" [(value)]="form.value.deviceType"></app-asa-dropdown>
+                    </form>
+                </div>
+            </app-p-collapse>
+        </div>
+    </div>
+    <div content>
+        <app-p-collapse [title]="'Template Tree'" [opened]="true">
+            <div class="pl-4">
+                <app-p-collapse [title]="'Inputs'" [opened]="true">
+                    <div class="ngx-dnd-container" (drop) = "dropInput($event)" ngxDroppable="input-target" [model]="inputs">
+                        <div class="ngx-dnd-item" ngxDraggable="['input-source','input-target']" *ngFor="let item of inputs" [model]="item">
+                            {{item.name}}
+                        </div>
+                    </div>
+                </app-p-collapse>
+                <app-p-collapse [title]="'Ouputs'" [opened]="true">
+                    <div class="ngx-dnd-container" (drop) = "dropOutput($event)" ngxDroppable="output-target" [model]="outputs">
+                        <div class="ngx-dnd-item" ngxDraggable="['output-source','output-target']" *ngFor="let item of outputs" [model]="item">
+                            {{item.name}}
+                        </div>
+                    </div>
+                </app-p-collapse>
+            </div>
+        </app-p-collapse>
+    </div>
+    <div side-right>
+        <div class="inputs p-2">
+            <app-p-collapse [title]="'Inputs'" [opened]="true">
+                <div class="ngx-dnd-container" ngxDroppable="input-source" [model]="inputList">
+                    <div class="ngx-dnd-item" ngxDraggable="['input-target']" *ngFor="let item of inputList" [model]="item">
+                        {{item.name}}
+                    </div>
+                </div>
+            </app-p-collapse>
+        </div>
+        <div class="outputs p-2">
+            <app-p-collapse [title]="'Outputs'" [opened]="true">
+                <div class="ngx-dnd-container" ngxDroppable="output-source" [model]="outputList">
+                    <div class="ngx-dnd-item" ngxDraggable="['output-target']" *ngFor="let item of outputList" [model]="item">
+                        {{item.name}}
+                    </div>
+                </div>
+            </app-p-collapse>
+        </div>
+    </div>
+</app-container>

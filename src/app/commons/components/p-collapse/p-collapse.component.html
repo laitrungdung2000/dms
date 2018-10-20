@@ -1,0 +1,8 @@
+<div (click)="toggle()" class="head p-2">
+    <i *ngIf="opened" class="icon {{icon_open}}"></i> 
+    <i *ngIf="!opened" class="icon {{icon_close}}"></i> 
+    <i class="icon {{icon}} ml-2"></i> {{title}}
+</div>
+<div [ngClass]="{hide: !opened}">
+    <ng-content></ng-content>
+</div>

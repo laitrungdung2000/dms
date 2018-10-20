@@ -1,0 +1,20 @@
+<table id="template_table" datatable [dtOptions]="dtOptions" class="row-border hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Device Type</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="templates?.length != 0">
+        <tr *ngFor="let template of templates; let idx = index" (click)="handleClickEvent(template, idx)" [ngClass]="{'active':template.id===selectTemplateId}"
+            (dblclick)="handleDbClickEvent(template)">
+            <td>{{ template.name }}</td>
+            <td>{{ template.deviceType }}</td>
+        </tr>
+    </tbody>
+    <tbody *ngIf="templates?.length == 0">
+        <tr>
+            <td colspan="3" class="no-data-available">No data!</td>
+        </tr>
+    <tbody>
+</table>

@@ -1,0 +1,13 @@
+<div class="filter-bar-container">
+    <div class="title">Search details</div>
+    <ul class="search-container">
+        <li class="search-name">
+            <div class="description" [ngSwitch]="isExpand" (click)="isExpand=!isExpand">
+                Name
+                <i *ngSwitchCase="true" class="icon icons8-collapse-arrow"></i>
+                <i *ngSwitchCase="false" class="icon icons8-expand-arrow"></i>
+            </div>
+            <input *ngIf="isExpand" class="search-input input" [(ngModel)]="templateName" (ngModelChange)="onChange($event)" name="templateName">
+        </li>
+    </ul>
+</div>

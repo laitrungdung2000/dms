@@ -1,0 +1,260 @@
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+app-root {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  font-family: arial, sans-serif;
+}
+
+app-header {
+  display: flex;
+  flex-flow: column nowrap;
+  z-index: 2;
+}
+
+app-tabs {
+  height: 100%;
+}
+
+app-body {
+  height: calc(100% - 50px);
+  z-index: 1;
+}
+
+app-home {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+}
+
+app-footer {
+  min-height: 100px;
+  background-color: var(--panther-bg);
+  z-index: 2;
+}
+
+/* -------------------- global-bar -------------------- */
+
+.global-bar {
+  width: 100%;
+  height: 40px;
+  background-color: var(--panther-bg);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding: 0 10px;
+  color: var(--white-text);
+  border-bottom: 1px solid var(--shark-bg);
+}
+
+.global-bar .btn {
+  min-width: 70px;
+  height: 24px;
+  padding: 0 5px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.global-bar .btn.active,
+.global-bar .btn:hover {
+  background-color: var(--shark-bg);
+  color: var(--blue);
+}
+
+.global-bar .btn .title {
+  font-size: 10pt;
+  margin-left: 5px;
+}
+
+.global-bar .devider {
+  width: 1px;
+  height: 24px;
+  margin: 0 20px;
+  background-color: var(--white-text);
+}
+
+/* ---------------------------------------------------- */
+
+/* -------------------- Default -------------------- */
+
+.loader {
+  position: absolute;
+  border: 5px solid rgba(243, 243, 243, 0.75);
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+  border-top: 5px solid #555;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  z-index: 1;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.input {
+  background-color: var(--greyhound-bg);
+  border: none;
+  border-radius: 3px;
+  height: 24px;
+  padding: 5px;
+  font-size: 12pt;
+  color: var(--white-text);
+}
+
+.input:focus {
+  outline: none;
+}
+
+.active {
+  color: var(--blue);
+}
+
+.dataTables_empty {
+  display: none;
+}
+
+/* button */
+.tbtn {
+  background: #cccc;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.nav-tabs {
+  border-bottom: none !important;
+}
+.cp {
+  cursor: pointer;
+}
+
+/* custom boostrap */
+div[class*="col-"] {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+div.is-invalid{
+ 
+  border: 1px solid #d91e04 !important;
+}
+.side-title{
+  border-bottom: 1px solid #ffffff0f;
+  font-size: 16px;
+}
+.mCSB_container{
+  height: 100% !important;
+}
+.ngx-dnd-container{
+  padding: 7px !important;
+  border: none !important;
+  margin: 0px !important;
+  background: none !important;
+}
+.ngx-dnd-item{
+  padding: 7px !important;
+  border: none !important;
+  border-radius: 3px;
+  background: none !important;
+  margin: 0px 10px !important;
+}
+.ngx-dnd-item:hover{
+  color: #1cbbff;
+}
+form label{
+  margin-bottom: 5px !important;
+}
+
+/* -------------------- DATATABLE -------------------- */
+
+.no-data-available {
+  text-align: center;
+}
+
+table {
+  color: var(--white-text);
+  font-size: 10pt;
+  width: 100%;
+  position: relative;
+}
+
+thead {
+  background-color: var(--tuna-bg);
+}
+
+thead > tr {
+  display: flex;
+}
+
+thead > tr > th {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding-left: 10px !important;
+}
+
+th.sorting_asc,
+th.sorting_desc,
+th.sorting {
+  height: 30px;
+  padding: 0px !important;
+}
+
+tbody > tr {
+  background-color: transparent !important;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+}
+
+tbody > tr > td {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+tbody > tr:hover {
+  background-color: var(--tuna-bg) !important;
+  color: white;
+}
+
+tbody > tr.active {
+  background-color: var(--shark-bg) !important;
+  color: var(--blue);
+}
+
+tbody > tr > td {
+  border-top: 0.3px solid rgba(255, 255, 255, 0.2) !important;
+  padding: 0 10px !important;
+}
+
+/* -------------------- DATATABLE - END -------------------- */

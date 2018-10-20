@@ -1,0 +1,30 @@
+<app-container toggleLeft="true" #container>
+	<div header>
+		<div class="global-bar">
+			<div class="btn" (click)="documentEditForm.ngSubmit.emit()"
+			[class.disabled]="!documentEditForm.form.valid">
+				<i class="icon icons8-save"></i>
+				<div class="title">Save</div>
+			</div>
+		</div>
+	</div>
+	<div side-left>
+		<div class="p-2 side-title">Visual Details</div>
+		<div class="p-2">
+			<form [formGroup]="form" (ngSubmit)="onSubmit()" #documentEditForm="ngForm">
+				<label>Config Name</label>
+				<input type="text" class="asa-input" formControlName="configName" name="configName" required [ngClass]="{'is-invalid': configName.invalid && (configName.dirty || configName.touched) }"/>
+			</form>
+			
+		</div>
+	</div>
+	<div content>
+		<div class="justify-content-center align-items-center d-flex" style="height: calc(100vh - 100px)">
+			<div class="d-flex justify-content-center align-items-center mt-5 m-auto" style="max-width: 300px; cursor: pointer; border-radius: 3px;" (click)="file.click()" [ngClass]="{'is-invalid': contentType.invalid && (contentType.dirty || contentType.touched) }">
+				<i *ngIf="imgPreview === ''" style="font-size: 200px;" class="icon icons8-image-file"></i>
+				<img *ngIf="imgPreview !== ''" src="{{imgPreview}}"/>
+				<input accept="image/*" type="file" (change)="onFileChange($event)" class="d-none" #file/>
+			</div>
+		</div>
+	</div>
+</app-container>

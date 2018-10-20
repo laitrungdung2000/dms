@@ -1,0 +1,8 @@
+<ul class="nav nav-tabs sub-tabs-container">
+    <li *ngFor="let tab of tabs" (click)="selectTab(tab)" [class.active]="tab.active">
+        <a routerLinkActive="active" routerLink="{{tab.path}}">
+            <i class="{{tab.icon}}" aria-hidden="true"></i>
+            <p class="title">{{tab.title}}</p>
+        </a> 
+    </li>
+</ul>

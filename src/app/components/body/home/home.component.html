@@ -1,0 +1,29 @@
+<app-container #container>
+    <div header>
+        <div class="global-bar">
+            <div class="btn" (click)="container.toggleSideLeft()">
+                <i class="icon icons8-search"></i>
+                <div class="title">Search</div>
+            </div>
+            <div class="devider"></div>
+            <div class="btn" (click)="openTemplateTab('')">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+                <div class="title">View</div>
+            </div>
+            <div class="devider"></div>
+            <div class="btn" (click)="openTemplateTab('-1')">
+                <i class="icon icons8-plus" aria-hidden="true"></i>
+                <div class="title">New template</div>
+            </div>
+            <div class="devider"></div>
+        </div>
+      
+    </div>
+    <div side-left>
+        <app-filter-bar></app-filter-bar>
+    </div>
+    <div content>
+        <app-datatable></app-datatable>
+    </div>
+    <div side-right>right</div>
+</app-container>

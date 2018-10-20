@@ -1,0 +1,46 @@
+<app-container toggleLeft="true" toggleRight="true" #container>
+    <div header>
+        <div class="global-bar">
+            <div class="btn" (click)="documentEditForm.ngSubmit.emit()"
+            [class.disabled]="!documentEditForm.form.valid">
+                <i class="icon icons8-save"></i>
+                <div class="title">Save</div>
+            </div>
+        </div>
+    </div>
+    <div side-left>
+        <div class="p-2 side-title">Output Details</div>
+        <div class="p-2">
+
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" #documentEditForm="ngForm">
+                <label>Name</label>
+                <input type="text" class="asa-input" formControlName="name" required [ngClass]="{'is-invalid': name.invalid && (name.dirty || name.touched) }" />
+                
+                <label>Config Name</label>
+                <input type="text" class="asa-input" formControlName="configName" required [ngClass]="{'is-invalid': configName.invalid && (configName.dirty || configName.touched) }" />
+                
+                <label>IO Type</label>
+                <app-asa-dropdown [data]="ioTypes" [selectedItem]="ioTypeSelected" [invalid] = "form.value.ioType === ''" [(value)]="form.value.ioType"></app-asa-dropdown>
+            </form>
+            
+        </div>
+    </div>
+    <div content>
+        <app-p-collapse [title]="'Actions'" [opened]="true">
+            <div class="ngx-dnd-container" (drop)="drop($event)" ngxDroppable="input-target" [model]="actions">
+                <div class="ngx-dnd-item" ngxDraggable="['input-source','input-target']" *ngFor="let item of actions" [model]="item">
+                {{item.configName}}
+                </div>
+            </div>
+        </app-p-collapse>
+    </div>
+    <div side-right>
+        <app-p-collapse [title]="'List Action'" [opened]="true">
+            <div class="ngx-dnd-container" ngxDroppable="input-source" [model]="actionList">
+                <div class="ngx-dnd-item" ngxDraggable="['input-target']" *ngFor="let item of actionList" [model]="item">
+                {{item.configName}}
+                </div>
+            </div>
+        </app-p-collapse>
+    </div>
+</app-container>

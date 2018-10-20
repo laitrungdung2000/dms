@@ -1,0 +1,45 @@
+.asa-dropdown {
+    border-radius: 3px;
+    background: #65676f;
+    font-size: 14px;
+    padding: 2px 5px 2px 5px;
+    height: 24px;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 10px;
+    
+  }
+  .asa-dropdown .dropdown-menu{
+    max-height: 200px;
+    overflow-y: scroll;
+  }
+  
+  .asa-dropdown:hover {
+    color: #1cbbff;
+    background: #383a3e;
+  }
+  
+  .asa-dropdown:active {
+    border: 1px solid #1cbbff;
+    outline: none;
+    background: #2b2c30;
+  }
+  
+  .asa-dropdown .dropdown-menu {
+    background: #44464c;
+    color: white;
+    padding: 0px;
+  }
+  
+  .asa-dropdown li {
+    padding: 5px;
+  }
+  
+  .asa-dropdown li:hover {
+    color: #1cbbff;
+  }
+  
+  .asa-dropdown li.active {
+    background: #35373c;
+  }
+  

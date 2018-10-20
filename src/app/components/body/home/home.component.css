@@ -1,0 +1,29 @@
+/* .home-container {
+  width: 100%;
+  height: 100%;
+}
+
+.home-container .content {
+  display: flex;
+  height: 100%;
+  background-color: var(--panther-bg);
+} */
+
+/* app-datatable {
+  width: 100%;
+}
+
+app-datatable.collapse {
+  width: calc(100% - 250px);
+} */
+
+/* app-filter-bar {
+  display: none;
+  width: 0px;
+  border-right: 1px solid var(--shark-bg);
+}
+
+app-filter-bar.expand {
+  display: flex;
+  width: 250px;
+} */

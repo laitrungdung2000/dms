@@ -1,0 +1,85 @@
+.tabs-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.tabs-container > li {
+    position: relative;
+    border-top: 2px solid transparent;
+    background-color: var(--tuna-bg);
+}
+
+.tabs-container > li .icons8-delete-3 {
+    display: none;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+}
+
+.tabs-container > li.active {
+    border-top-color: var(--blue);
+    background-color: var(--panther-bg);
+}
+
+.tabs-container > li.active .title {
+    color: var(--blue);
+}
+
+.tabs-container > li.active .icons8-delete-3 {
+    display: flex;
+}
+
+.tabs-container > li > a {
+    min-width: 70px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--white-text);
+    padding: 0 10px;
+}
+
+.tabs-container > li > a > i {
+    font-size: 20pt !important;
+}
+
+.tabs-container > li.active > a > i {
+    color: var(--blue);
+}
+
+.add-tab-container {
+    min-width: 70px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-tab-btn {
+    background-color: var(--panther-bg);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+}
+
+.add-tab-btn:hover {
+    background-color: var(--blue);
+}
+
+.title {
+    font-size: 12pt;
+}

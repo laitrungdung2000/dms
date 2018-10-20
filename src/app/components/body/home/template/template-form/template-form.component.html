@@ -1,0 +1,56 @@
+<form [formGroup]="templateForm" (ngSubmit)="onSubmit()">
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Type</label>
+        <div class="col-sm-9">
+            <select class="custom-select" name="type" formControlName="deviceType">
+                <option [value]="deviceType" *ngFor="let deviceType of deviceTypes">{{deviceType}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Name</label>
+        <div class="col-sm-9">
+
+            <input type="text" class="asa-input" name="name" placeholder="name" formControlName="name" required [ngClass]="{'is-invalid': name.invalid && (name.dirty || name.touched) }">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Description</label>
+        <div class="col-sm-9">
+            <textarea required type="text" class="asa-input" formControlName="description" [ngClass]="{'is-invalid': description.invalid && (description.dirty || description.touched) }"></textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <div class="form-check">
+                <label class="asa-c-checkbox">Send Alarms
+                    <input class="form-check-input" type="checkbox" formControlName="sendsAlarms">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" formControlName="sendsCameraSwitch">
+                <label class="form-check-label">
+                    Send Camera
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" formControlName="sendsEvents">
+                <label class="form-check-label">
+                    Send Events
+                </label>
+            </div>
+        </div>
+    </div>
+</form>

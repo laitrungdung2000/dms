@@ -1,0 +1,37 @@
+<app-container #container>
+    <div header>
+        <div class="global-bar">
+            <div class="btn" (click)="documentEditForm.ngSubmit.emit()" [class.disabled]="!documentEditForm.form.valid">
+                <i class="icon icons8-save"></i>
+                <div class="title">Save</div>
+            </div>
+        </div>
+    </div>
+    <div side-left>
+
+    </div>
+    <div content>
+        <div class="p-2 side-title">Action Details</div>
+        <div class="p-2" style="max-width: 500px; margin: auto">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" #documentEditForm="ngForm">
+                <label>Name</label>
+                <input type="text" class="asa-input" formControlName="actionName" required [ngClass]="{'is-invalid': actionName.invalid && (actionName.dirty || actionName.touched) }" />
+
+                <label>Config Name</label>
+                <input type="text" class="asa-input" formControlName="configName" required [ngClass]="{'is-invalid': configName.invalid && (configName.dirty || configName.touched) }" />
+
+                <label>State Value</label>
+                <div formGroupName="actionValue">
+                    <label>Value</label>
+                    <input type="text" class="asa-input" formControlName="value" required [ngClass]="{'is-invalid': value.invalid && (value.dirty || value.touched) }" />
+
+                    <label>Value type</label>
+                    <app-asa-dropdown [data]="valueTypes" [selectedItem]="visualTypeSelected" [invalid] = "form.value.actionValue.valueType === undefined" [(value)]="form.value.actionValue.valueType"></app-asa-dropdown>
+
+                    <label>Value Unit</label>
+                    <app-asa-dropdown [data]="valueUnits" [selectedItem]="visualUnitSelected" [invalid] = "form.value.actionValue.valueUnit === undefined" [(value)]="form.value.actionValue.valueUnit"></app-asa-dropdown>
+                </div>
+            </form>
+        </div>
+    </div>
+</app-container>

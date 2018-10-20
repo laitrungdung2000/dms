@@ -1,0 +1,72 @@
+<app-container #container>
+    <div header>
+        <div class="global-bar">
+            <div class="btn" (click)="documentEditForm.ngSubmit.emit()" [class.disabled]="!documentEditForm.form.valid">
+                <i class="icon icons8-save"></i>
+                <div class="title">Save</div>
+            </div>
+        </div>
+    </div>
+    <div side-left>
+        
+    </div>
+    <div content>
+        <div class="p-2 side-title">State Details</div>
+        <div class="p-2" style="max-width: 500px; margin: auto">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" #documentEditForm="ngForm">
+                <label>Config Name</label>
+                <input type="text" class="asa-input" formControlName="configName" required [ngClass]="{'is-invalid': configName.invalid && (configName.dirty || configName.touched) }" />
+
+                <label>Name</label>
+                <input type="text" class="asa-input" formControlName="stateName" required [ngClass]="{'is-invalid': stateName.invalid && (stateName.dirty || stateName.touched) }" />
+                
+                <div class="form-check mt-2">
+                    <label class="asa-c-checkbox">Default State
+                        <input class="form-check-input" type="checkbox" formControlName="defaultState">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <label class="asa-c-checkbox">Failure State
+                        <input class="form-check-input" type="checkbox" formControlName="failureState">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <label class="asa-c-checkbox">State Camera Switch
+                        <input class="form-check-input" type="checkbox" formControlName="stateCameraSwitch">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+
+                <label>State visual </label>
+                <app-asa-dropdown [data]="visuals" [selectedItem]="visualSelected" [invalid] = "form.value.stateVisual === ''" [(value)]="form.value.stateVisual"></app-asa-dropdown>
+    
+                
+                <label>State Value</label>
+                <div class="p-2" formGroupName="stateValue">
+                    <label>Value</label>
+                    <input type="text" class="asa-input" formControlName="value" required [ngClass]="{'is-invalid': value.invalid && (value.dirty || value.touched) }" />
+
+                    <label>Value type</label>
+                    <app-asa-dropdown [data]="valueTypes" [selectedItem]="visualTypeSelected" [invalid] = "form.value.stateValue.valueType === undefined" [(value)]="form.value.stateValue.valueType"></app-asa-dropdown>
+
+                    <label>Value Unit</label>
+                    <app-asa-dropdown [data]="valueUnits" [selectedItem]="visualUnitSelected" [invalid] = "form.value.stateValue.valueUnit === undefined" [(value)]="form.value.stateValue.valueUnit"></app-asa-dropdown>
+                </div>
+
+                <label>Color</label>
+    
+                <div
+                [style.background]="color"
+                [(colorPicker)]="color"
+                [cpOutputFormat]="'hex'"
+                (colorPickerChange)="onChangeColorHex8($event);" class="asa-input" required [ngClass]="{'is-invalid': displayColor.invalid && (displayColor.dirty || displayColor.touched) }">{{color}}</div>
+
+            </form>
+
+        </div>
+    </div>
+</app-container>

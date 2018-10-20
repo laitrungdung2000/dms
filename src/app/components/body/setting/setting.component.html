@@ -1,0 +1,138 @@
+<div class="setting-container">
+    <div class="sub-navigation">
+        <div class="title">Settings</div>
+        <app-sub-tabs (selectTabEvent)="updateActiveTabIdx($event)">
+            <app-tab tabIcon="fa fa-download" tabPath="inputs" tabTitle="Template Inputs" tabIdx="0"></app-tab>
+            <app-tab tabIcon="fa fa-upload" tabPath="outputs" tabTitle="Template Outputs" tabIdx="1"></app-tab>
+            <app-tab tabIcon="fa fa-tasks" tabPath="actions" tabTitle="Template Actions" tabIdx="2"></app-tab>
+            <app-tab tabIcon="fa fa-info" tabPath="states" tabTitle="Template States" tabIdx="3"></app-tab>
+            <app-tab tabIcon="fa fa-file-image-o" tabPath="visuals" tabTitle="Template Visuals" tabIdx="4"></app-tab>
+        </app-sub-tabs>
+    </div>
+    
+    <div class="active-tab">
+        <div class="global-bar">
+            <div class="btn" (click)="openObjectTab('-1')">
+                <i class="icon icons8-plus-math"></i>
+                <div class="title">New</div>
+            </div>
+            <div class="devider"></div>
+            <div class="btn" (click)="openObjectTab('')">
+                <i class="icon icons8-edit"></i>
+                <div class="title">Edit</div>
+            </div>
+            <div class="devider"></div>
+            <div class="btn" (click)="deleteItem()">
+                <i class="icon icons8-delete-2"></i>
+                <div class="title">Delete</div>
+            </div>
+        </div>
+        <div class="active-tab-container">
+            <table id="input_table" datatable [dtOptions]="dtOptions[0]" class="row-border hover" *ngIf="activeTabIdx===0">
+                <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Config Name</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="inputs?.length != 0">
+                    <tr *ngFor="let input of inputs; let idx = index" (click)="handleClickEvent('Input', idx)" [ngClass]="{'active':input.id===selectInputId}">
+                        <td>{{ input.id }}</td>
+                        <td>{{ input.name }}</td>
+                        <td>{{ input.configName }}</td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf="inputs?.length == 0">
+                    <tr>
+                        <td colspan="3" class="no-data-available">No data!</td>
+                    </tr>
+                <tbody>
+            </table>
+            <table id="output_table" datatable [dtOptions]="dtOptions[1]" class="row-border hover" *ngIf="activeTabIdx===1">
+                <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Config Name</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="outputs?.length != 0">
+                    <tr *ngFor="let output of outputs; let idx = index" (click)="handleClickEvent('Output', idx)" [ngClass]="{'active':output.id===selectOutputId}">
+                        <td>{{ output.id }}</td>
+                        <td>{{ output.name }}</td>
+                        <td>{{ output.configName }}</td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf="outputs?.length == 0">
+                    <tr>
+                        <td colspan="3" class="no-data-available">No data!</td>
+                    </tr>
+                <tbody>
+            </table>
+            <table id="action_table" datatable [dtOptions]="dtOptions[2]" class="row-border hover" *ngIf="activeTabIdx===2">
+                <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Action Name</th>
+                      <th>Config Name</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="actions?.length != 0">
+                    <tr *ngFor="let action of actions; let idx = index" (click)="handleClickEvent('Action', idx)" [ngClass]="{'active':action.id===selectActionId}">
+                        <td>{{ action.id }}</td>
+                        <td>{{ action.actionName }}</td>
+                        <td>{{ action.configName }}</td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf="actions?.length == 0">
+                    <tr>
+                        <td colspan="3" class="no-data-available">No data!</td>
+                    </tr>
+                <tbody>
+            </table>
+            <table id="state_table" datatable [dtOptions]="dtOptions[3]" class="row-border hover" *ngIf="activeTabIdx===3">
+                <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Config Name</th>
+                      <th>State Name</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="states?.length != 0">
+                    <tr *ngFor="let state of states; let idx = index" (click)="handleClickEvent('State', idx)" [ngClass]="{'active':state.id===selectStateId}">
+                        <td>{{ state.id }}</td>
+                        <td>{{ state.configName }}</td>
+                        <td>{{ state.stateName }}</td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf="states?.length == 0">
+                    <tr>
+                        <td colspan="3" class="no-data-available">No data!</td>
+                    </tr>
+                <tbody>
+            </table>
+            <table id="visual_table" datatable [dtOptions]="dtOptions[4]" class="row-border hover" *ngIf="activeTabIdx===4">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Config Name</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="visuals?.length != 0">
+                    <tr *ngFor="let visual of visuals; let idx = index" (click)="handleClickEvent('Visual', idx)" [ngClass]="{'active':visual.id===selectVisualId}">
+                        <td>{{ visual.id }}</td>
+                        <td>{{ visual.configName }}</td>
+                        <td><img src="{{'data:'+ visual.contentType +';base64,' + visual.content}}"/></td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf="visuals?.length == 0">
+                    <tr>
+                        <td colspan="3" class="no-data-available">No data!</td>
+                    </tr>
+                <tbody>
+            </table>
+        </div>
+    </div>
+</div>

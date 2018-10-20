@@ -1,0 +1,16 @@
+<div class="header-container">
+    <div class="app-name-bar">
+        <div class="app-name">Dallmeier DMS</div>
+    </div>
+    
+    <div class="header-content">
+        <div class="logo-container">
+            <div class="dl-logo-circle dl-logo"></div>
+        </div>
+        
+        <app-tabs>
+            <app-tab *ngFor="let tab of tabList" tabIcon="{{tab.icon}}" tabPath="{{tab.path}}" tabTitle="{{tab.title}}" tabId="{{tab.id}}" tabIdx="{{tab.idx}}">
+            </app-tab>
+        </app-tabs>
+    </div>
+</div>

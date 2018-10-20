@@ -1,0 +1,14 @@
+<ul class="nav nav-tabs tabs-container">
+    <li *ngFor="let tab of tabs" (click)="selectTab(tab)" [class.active]="tab.active">
+        <a routerLink="{{tab.path}}/{{tab.id}}" routerLinkActive="active">
+            <i class="{{tab.icon}}" aria-hidden="true"></i>
+            <div class="title">{{tab.title}}</div>
+        </a>
+        <i class="icon icons8-delete-3" *ngIf="tab.title!==''" (click)="removeTab(tab)"></i>
+    </li>
+    <div class="add-tab-container">
+        <div class="add-tab-btn" (click)="addTab()">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </div>
+    </div>
+</ul>
